@@ -286,6 +286,13 @@
       transform: scale(0.85);
     }
   }
+
+  &[disabled] {
+    pointer-events: all;
+    cursor: not-allowed;
+    // opacity: 0.6;
+    // color: gray;
+  }
 }
 
 .jenkins-validate-button__container {

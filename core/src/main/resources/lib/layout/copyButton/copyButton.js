@@ -3,8 +3,17 @@ Behaviour.specify(
   "copyButton",
   0,
   function (copyButton) {
+    // add mouse event listener
+    copyButton.addEventListener('mouseenter', () => {
+      if(copyButton.disabled){
+        hoverNotification(
+          "Copy is only supported with a secure (HTTPS) connection.", copyButton
+        );
+      }
+    });
+
     copyButton.addEventListener("click", () => {
-      if (isSecureContext) {
+      if (!isSecureContext) {
         var text = copyButton.getAttribute("text");
         if (copyButton.hasAttribute("ref")) {
           var ref = copyButton.getAttribute("ref");
@@ -30,6 +39,7 @@ Behaviour.specify(
             );
           });
       } else {
+        copyButton.disabled = true;
         hoverNotification(
           "Copy is only supported with a secure (HTTPS) connection",
           copyButton,
