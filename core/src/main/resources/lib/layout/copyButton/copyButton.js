@@ -13,7 +13,7 @@ Behaviour.specify(
     });
 
     copyButton.addEventListener("click", () => {
-      if (!isSecureContext) {
+      if (isSecureContext) {
         var text = copyButton.getAttribute("text");
         if (copyButton.hasAttribute("ref")) {
           var ref = copyButton.getAttribute("ref");
