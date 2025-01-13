@@ -3,6 +3,10 @@ Behaviour.specify(
   "copyButton",
   0,
   function (copyButton) {
+    // Check if its secure connected
+    if (!isSecureContext) {
+      copyButton.disabled = true;
+    }
     // add mouse event listener
     copyButton.addEventListener('mouseenter', () => {
       if(copyButton.disabled){
@@ -39,7 +43,6 @@ Behaviour.specify(
             );
           });
       } else {
-        copyButton.disabled = true;
         hoverNotification(
           "Copy is only supported with a secure (HTTPS) connection",
           copyButton,
